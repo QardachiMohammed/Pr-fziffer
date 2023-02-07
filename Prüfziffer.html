@@ -1,0 +1,54 @@
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Prüfziffern EAN validieren</title>
+		
+		<script>
+			"use strict";
+
+			
+			function fFunction(){
+			let input= document.getElementById("idInput").value;
+			let a=[1,3,1,3,1,3,1,3,1,3,1,3];
+			let i=0;
+			let vSumme;
+			let vErgebnis = 0;
+			let check;
+			let vPrüfziffer;
+			let Prüfziffer;
+			let vAusgabe = "";
+				
+
+			 
+			
+			
+			
+			while(i<11){
+			vSumme = a[i]*input[i];
+			vErgebnis = vSumme + vErgebnis; 
+			i++;
+			}
+
+
+			vPrüfziffer = 10-(vErgebnis%10);
+			if(vPrüfziffer == 10){
+				vPrüfziffer=0;}
+			if(vPrüfziffer==input[12]){
+				check="true";}
+			else{
+				check="false";}
+			vAusgabe = vAusgabe + check;
+
+			document.getElementById("idOutput").innerHTML= vAusgabe;
+			}
+		</script>
+	</head>
+
+	<body>
+		<h1>Prüfziffer Berchenen / validieren</h1>
+		<input id="idInput" type="text" maxlength="13" size="10" value ="400999301020">
+		<button onclick="fFunction();">Berechne Prüfziffer!</button><br><br>
+		<div id="idOutput"></div>
+	
+</body></html>
